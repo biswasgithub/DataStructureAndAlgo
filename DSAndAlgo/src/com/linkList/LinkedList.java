@@ -102,6 +102,21 @@ public class LinkedList {
 		return list;
 	}
 	
+	Node reverse(Node node) 
+    { 
+        Node prev = null; 
+        Node current = node; 
+        Node next = null; 
+        while (current != null) { 
+            next = current.next; 
+            current.next = prev; 
+            prev = current; 
+            current = next; 
+        } 
+        node = prev; 
+        return node; 
+    } 
+	
 	public void print() {
 		Node curr_node = head;
 
@@ -135,5 +150,10 @@ public class LinkedList {
 		System.out.print("\nInsert node "+position+"th position :  ");
 		list = list.insertAtPosition(list, position,data1);
 		list.print();
+		
+		System.out.println("\nReverse Linked List: ");
+		list.head=list.reverse(list.head);
+		list.print();
+		
 	}
 }
